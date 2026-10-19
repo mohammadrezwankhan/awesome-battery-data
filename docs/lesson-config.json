@@ -1,0 +1,94 @@
+{
+  "repository": "awesome-battery-data",
+  "domain": "DOMAIN_A",
+  "title": "Awesome Battery Data",
+  "version": "2.0.0",
+  "author": "Mohammad Rezwan Khan",
+  "lessons": [
+    {
+      "id": "L01",
+      "title": "Public Battery Cycling Dataset Taxonomy & Download Matrix",
+      "level": "Beginner",
+      "duration": "30 mins",
+      "config_file": "catalogs/cycling_datasets.json",
+      "summary": "Navigate NASA, Oxford, MIT-Stanford, and Sandia open-access battery cycling databases with standardized column schemas.",
+      "inputs": [
+        "Open-source repository index",
+        "Standard metadata tags"
+      ],
+      "parameters": {
+        "DatasetCount": 45,
+        "ChemistryTypes": [
+          "LFP",
+          "NMC",
+          "NCA",
+          "Sodium-Ion"
+        ]
+      },
+      "checkpoints": [
+        "Filter datasets by C-rate and temperature range",
+        "Download sample validation cycle curve"
+      ]
+    },
+    {
+      "id": "L02",
+      "title": "Electrochemical Impedance Spectroscopy (EIS) Repository Analysis",
+      "level": "Intermediate",
+      "duration": "45 mins",
+      "config_file": "catalogs/eis_spectrum_data.json",
+      "summary": "Explore Nyquist and Bode impedance spectra across SOC levels and temperatures for equivalent circuit modeling.",
+      "inputs": [
+        "Frequency range 10 mHz to 100 kHz",
+        "Complex impedance Z = Z_real + j*Z_imag"
+      ],
+      "parameters": {
+        "FreqPoints": 60,
+        "Temperature_C": 25.0
+      },
+      "checkpoints": [
+        "Identify high-frequency inductive loop and charge-transfer semicircle",
+        "Fit Warburg diffusion tail"
+      ]
+    },
+    {
+      "id": "L03",
+      "title": "Microstructure & Synchrotron X-ray Computed Tomography (CT)",
+      "level": "Advanced",
+      "duration": "60 mins",
+      "config_file": "catalogs/microstructure_ct.json",
+      "summary": "Access 3D electrode reconstruction datasets: particle tortuosity, active material volume fraction, and binder distribution.",
+      "inputs": [
+        "Segmented voxel volumes",
+        "Electrode thickness profiles"
+      ],
+      "parameters": {
+        "VoxelResolution_nm": 50,
+        "Porosity_pct": 32.5
+      },
+      "checkpoints": [
+        "Calculate effective transport coefficients",
+        "Understand correlation with fast-charging plating risk"
+      ]
+    },
+    {
+      "id": "L04",
+      "title": "Automated Benchmark Data Validation & Upstream Sync Pipeline",
+      "level": "Production",
+      "duration": "60 mins",
+      "config_file": "catalogs/upstream_sync_protocol.json",
+      "summary": "Deploy GitHub Actions workflow to check URL liveness, parse upstream additions, and render interactive searchable tables.",
+      "inputs": [
+        "Upstream repository commit hooks",
+        "Link checker automation"
+      ],
+      "parameters": {
+        "AutoSyncSchedule": "Weekly",
+        "ValidationTimeout_sec": 30
+      },
+      "checkpoints": [
+        "Zero broken external research links",
+        "Automatic pull request creation for schema drift"
+      ]
+    }
+  ]
+}
