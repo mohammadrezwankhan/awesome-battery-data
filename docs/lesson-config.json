@@ -1,94 +1,302 @@
 {
-  "repository": "awesome-battery-data",
-  "domain": "DOMAIN_A",
-  "title": "Awesome Battery Data",
-  "version": "2.0.0",
-  "author": "Mohammad Rezwan Khan",
-  "lessons": [
+  "$schema": "./lesson-config.schema.json",
+  "schema_version": "1.0",
+  "repository": {
+    "owner": "mohammadrezwankhan",
+    "slug": "awesome-battery-data",
+    "name": "awesome-battery-data",
+    "title": "Battery Data Discovery Lab",
+    "url": "https://github.com/mohammadrezwankhan/awesome-battery-data",
+    "default_branch": "main",
+    "description": "Find traceable battery datasets and compare how temperature, cycling conditions and holdout choices shape capacity fade.",
+    "summary": "A forked directory of electrochemical, microstructural, safety, modeling, and analysis resources. Synthetic fade scenarios explain why protocol metadata matters before combining datasets.",
+    "audience": "Battery researchers, students, and data practitioners choosing data for a specific question.",
+    "topics": [
+      "battery",
+      "battery-data",
+      "energy-storage",
+      "lithium-ion-battery",
+      "open-data",
+      "battery-degradation",
+      "electrochemistry",
+      "data-analysis",
+      "machine-learning",
+      "battery-modeling",
+      "state-of-health",
+      "research-data",
+      "awesome-list",
+      "scientific-computing",
+      "reproducible-research"
+    ],
+    "source_paths": [
+      "README.md",
+      "awesome-battery-data.png",
+      ".github/workflows/no-codex-attribution.yml"
+    ],
+    "is_fork": true,
+    "upstream": "https://github.com/pauljgasper/awesome-battery-data"
+  },
+  "domain": {
+    "id": "A",
+    "name": "Energy systems",
+    "primary": "#00E5FF",
+    "secondary": "#00E676",
+    "surface": "#0A192F",
+    "glow": "rgba(0,229,255,0.35)"
+  },
+  "model": {
+    "title": "Data comparability · synthetic cycling protocols",
+    "timeUnit": "cycles",
+    "horizon": 1000,
+    "parameters": [
+      {
+        "key": "fadePer1000Pct",
+        "label": "Base fade coefficient",
+        "unit": "% / 1k cycles",
+        "min": 2,
+        "max": 40,
+        "step": 1,
+        "default": 18,
+        "calibration": "Illustrative input; verified against the declared analytical model, not field measurements."
+      },
+      {
+        "key": "temperatureC",
+        "label": "Cell temperature",
+        "unit": "°C",
+        "min": 10,
+        "max": 50,
+        "step": 1,
+        "default": 25,
+        "calibration": "Illustrative input; verified against the declared analytical model, not field measurements."
+      },
+      {
+        "key": "cRate",
+        "label": "Cycling rate",
+        "unit": "C",
+        "min": 0.2,
+        "max": 3,
+        "step": 0.1,
+        "default": 1,
+        "calibration": "Illustrative input; verified against the declared analytical model, not field measurements."
+      },
+      {
+        "key": "initialCapacityAh",
+        "label": "Initial capacity",
+        "unit": "Ah",
+        "min": 10,
+        "max": 200,
+        "step": 5,
+        "default": 100,
+        "calibration": "Illustrative input; verified against the declared analytical model, not field measurements."
+      }
+    ],
+    "metrics": [
+      {
+        "key": "retentionPct",
+        "label": "Capacity retention",
+        "unit": "%",
+        "decimals": 1
+      },
+      {
+        "key": "capacityAh",
+        "label": "Remaining capacity",
+        "unit": "Ah",
+        "decimals": 1
+      },
+      {
+        "key": "resistanceGrowthPct",
+        "label": "Resistance growth",
+        "unit": "%",
+        "decimals": 1
+      },
+      {
+        "key": "throughputKWh",
+        "label": "Energy throughput",
+        "unit": "kWh",
+        "decimals": 1
+      }
+    ],
+    "equation": "k = (f/100000) · exp((T−25)/20) · √C-rate; retention = 100 exp(−kt); capacity = Q₀ exp(−kt).",
+    "assumptions": [
+      "A transparent exponential fade curve is an educational proxy, not a fitted lifetime prediction.",
+      "Temperature and C-rate remain constant for every cycle.",
+      "Throughput integrates remaining capacity at an illustrative 3.7 V cell voltage; calendar aging is omitted.",
+      "Paul Gasper and upstream contributors retain attribution for the resource directory.",
+      "The source list spans chemistries, formats, protocols, measurements, and separate licenses; a link is not a quality guarantee.",
+      "The displayed exponential relation and coupled stress factors are teaching assumptions, not measurements from any listed cell."
+    ],
+    "kind": "degradation",
+    "introduction": "No linked dataset is downloaded or fitted here. The same invented fade equation is used to reveal how temperature, rate, and normalization can confound a cross-study comparison.",
+    "calibration_status": "Uncalibrated synthetic teaching proxy"
+  },
+  "modules": [
     {
-      "id": "L01",
-      "title": "Public Battery Cycling Dataset Taxonomy & Download Matrix",
-      "level": "Beginner",
-      "duration": "30 mins",
-      "config_file": "catalogs/cycling_datasets.json",
-      "summary": "Navigate NASA, Oxford, MIT-Stanford, and Sandia open-access battery cycling databases with standardized column schemas.",
-      "inputs": [
-        "Open-source repository index",
-        "Standard metadata tags"
+      "id": "module-1",
+      "title": "Choose data for the question",
+      "objective": "Match the desired battery claim to the measurements and provenance a dataset must contain.",
+      "minutes": 12,
+      "steps": [
+        "Open the electrochemical-data table and identify its chemistry, cell format, study, and measurement columns.",
+        "Apply a 25°C, 1C synthetic protocol and read normalized retention at 1,000 cycles.",
+        "Name one question that charge/discharge data can support and one that requires EIS or imaging."
       ],
-      "parameters": {
-        "DatasetCount": 45,
-        "ChemistryTypes": [
-          "LFP",
-          "NMC",
-          "NCA",
-          "Sodium-Ion"
-        ]
+      "preset": {
+        "fadePer1000Pct": 18,
+        "temperatureC": 25,
+        "cRate": 1,
+        "initialCapacityAh": 100
       },
       "checkpoints": [
-        "Filter datasets by C-rate and temperature range",
-        "Download sample validation cycle curve"
-      ]
+        {
+          "label": "Baseline retention at 1,000 cycles",
+          "metric": "retentionPct",
+          "operator": "==",
+          "expected": 83.527021,
+          "tolerance": 0.02,
+          "atTime": 1000
+        },
+        {
+          "label": "Baseline remaining capacity in Ah",
+          "metric": "capacityAh",
+          "operator": "==",
+          "expected": 83.527021,
+          "tolerance": 0.02,
+          "atTime": 1000
+        }
+      ],
+      "reflection": "Which source fields would you record before treating a dataset as evidence for cycle aging?",
+      "source_paths": [
+        "README.md"
+      ],
+      "level": "Foundation"
     },
     {
-      "id": "L02",
-      "title": "Electrochemical Impedance Spectroscopy (EIS) Repository Analysis",
-      "level": "Intermediate",
-      "duration": "45 mins",
-      "config_file": "catalogs/eis_spectrum_data.json",
-      "summary": "Explore Nyquist and Bode impedance spectra across SOC levels and temperatures for equivalent circuit modeling.",
-      "inputs": [
-        "Frequency range 10 mHz to 100 kHz",
-        "Complex impedance Z = Z_real + j*Z_imag"
+      "id": "module-2",
+      "title": "Expose a temperature confound",
+      "objective": "Hold the synthetic cell fixed while changing only temperature.",
+      "minutes": 15,
+      "steps": [
+        "Keep the fade coefficient, capacity, and C-rate from the baseline.",
+        "Change temperature to 45°C, predict the direction of retention change, and run.",
+        "Return to the directory and ask whether the two real studies you might compare report matching temperatures."
       ],
-      "parameters": {
-        "FreqPoints": 60,
-        "Temperature_C": 25.0
+      "preset": {
+        "fadePer1000Pct": 18,
+        "temperatureC": 45,
+        "cRate": 1,
+        "initialCapacityAh": 100
       },
       "checkpoints": [
-        "Identify high-frequency inductive loop and charge-transfer semicircle",
-        "Fit Warburg diffusion tail"
-      ]
+        {
+          "label": "Hot-case retention at 1,000 cycles",
+          "metric": "retentionPct",
+          "operator": "==",
+          "expected": 61.306107,
+          "tolerance": 0.02,
+          "atTime": 1000
+        },
+        {
+          "label": "Retention falls below 70% in this toy case",
+          "metric": "retentionPct",
+          "operator": "<",
+          "expected": 70,
+          "tolerance": 0.02,
+          "atTime": 1000
+        }
+      ],
+      "reflection": "Why would fitting one pooled curve across different test temperatures conceal a study-design difference?",
+      "source_paths": [
+        "README.md"
+      ],
+      "level": "Parameter study"
     },
     {
-      "id": "L03",
-      "title": "Microstructure & Synchrotron X-ray Computed Tomography (CT)",
-      "level": "Advanced",
-      "duration": "60 mins",
-      "config_file": "catalogs/microstructure_ct.json",
-      "summary": "Access 3D electrode reconstruction datasets: particle tortuosity, active material volume fraction, and binder distribution.",
-      "inputs": [
-        "Segmented voxel volumes",
-        "Electrode thickness profiles"
+      "id": "module-3",
+      "title": "Separate normalization from cell size",
+      "objective": "Explain why absolute capacity and normalized retention answer different questions.",
+      "minutes": 12,
+      "steps": [
+        "Restore 25°C and 1C, then change initial capacity from 100 Ah to 50 Ah.",
+        "Predict which metric stays unchanged and which scales by one half.",
+        "Use the cell-format and chemistry columns to explain why normalization alone does not make datasets interchangeable."
       ],
-      "parameters": {
-        "VoxelResolution_nm": 50,
-        "Porosity_pct": 32.5
+      "preset": {
+        "fadePer1000Pct": 18,
+        "temperatureC": 25,
+        "cRate": 1,
+        "initialCapacityAh": 50
       },
       "checkpoints": [
-        "Calculate effective transport coefficients",
-        "Understand correlation with fast-charging plating risk"
-      ]
+        {
+          "label": "Normalized retention is unchanged",
+          "metric": "retentionPct",
+          "operator": "==",
+          "expected": 83.527021,
+          "tolerance": 0.02,
+          "atTime": 1000
+        },
+        {
+          "label": "The smaller cell retains its own Ah scale",
+          "metric": "capacityAh",
+          "operator": "==",
+          "expected": 41.763511,
+          "tolerance": 0.02,
+          "atTime": 1000
+        }
+      ],
+      "reflection": "What additional metadata would you need to compare a pouch-cell result with a cylindrical-cell result?",
+      "source_paths": [
+        "README.md"
+      ],
+      "level": "Stress test"
     },
     {
-      "id": "L04",
-      "title": "Automated Benchmark Data Validation & Upstream Sync Pipeline",
-      "level": "Production",
-      "duration": "60 mins",
-      "config_file": "catalogs/upstream_sync_protocol.json",
-      "summary": "Deploy GitHub Actions workflow to check URL liveness, parse upstream additions, and render interactive searchable tables.",
-      "inputs": [
-        "Upstream repository commit hooks",
-        "Link checker automation"
+      "id": "module-4",
+      "title": "Create a reproducible dataset shortlist",
+      "objective": "State selection criteria and limitations before any download or model fitting.",
+      "minutes": 18,
+      "steps": [
+        "Apply a gentler 0.5C protocol at 25°C and inspect retention and throughput.",
+        "Choose a candidate from the directory and record its citation, download location, test conditions, and reuse terms.",
+        "Export the synthetic scenario as an assumptions example, clearly separated from the selected dataset."
       ],
-      "parameters": {
-        "AutoSyncSchedule": "Weekly",
-        "ValidationTimeout_sec": 30
+      "preset": {
+        "fadePer1000Pct": 18,
+        "temperatureC": 25,
+        "cRate": 0.5,
+        "initialCapacityAh": 100
       },
       "checkpoints": [
-        "Zero broken external research links",
-        "Automatic pull request creation for schema drift"
-      ]
+        {
+          "label": "Low-rate retention at the fixed horizon",
+          "metric": "retentionPct",
+          "operator": "==",
+          "expected": 88.048779,
+          "tolerance": 0.02,
+          "atTime": 1000
+        },
+        {
+          "label": "Integrated illustrative throughput",
+          "metric": "throughputKWh",
+          "operator": "==",
+          "expected": 347.421349,
+          "tolerance": 0.02,
+          "atTime": 1000
+        }
+      ],
+      "reflection": "Write the inclusion/exclusion criteria and the missing-data questions that must be resolved before training a model.",
+      "source_paths": [
+        "README.md"
+      ],
+      "level": "Transfer to source"
     }
-  ]
+  ],
+  "source": {
+    "commit": "a8fe5506536827b9464b99fbd57283e815392c01",
+    "audited_at": "2026-10-19T08:39:24Z",
+    "url": "https://github.com/mohammadrezwankhan/awesome-battery-data/tree/a8fe5506536827b9464b99fbd57283e815392c01",
+    "calibration_status": "synthetic-analytical-fixtures",
+    "scope": "This browser lab is a standalone teaching approximation. Use the linked source for the project implementation."
+  },
+  "dashboard_url": "https://mohammadrezwankhan.github.io/awesome-battery-data/"
 }

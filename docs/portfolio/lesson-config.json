@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "repository": "mohammadrezwankhan/awesome-battery-data",
+  "display_name": "Battery Data · Research Navigator",
+  "description": "Navigate battery datasets, model code and provenance through this attributed research-catalogue fork.",
+  "domain": "DOMAIN_A",
+  "theme": {
+    "accent": "#00E5FF",
+    "secondary": "#00E676",
+    "surface": "#0A192F",
+    "glow": "rgba(0, 229, 255, 0.35)",
+    "label": "Energy systems",
+    "short": "Energy"
+  },
+  "repo_type": "curated-list-fork",
+  "source_revision": "a8fe5506536827b9464b99fbd57283e815392c01",
+  "source_snapshot_date": "2026-10-19",
+  "repo_url": "https://github.com/mohammadrezwankhan/awesome-battery-data",
+  "homepage": null,
+  "upstream": "pauljgasper/awesome-battery-data",
+  "lessons": [
+    {
+      "id": "path-01",
+      "title": "Understand catalogue provenance",
+      "summary": "Read the introduction, dated inventory counts and author attribution.",
+      "objective": "Distinguish a curated index from ownership of the linked datasets.",
+      "checkpoint": "Retain Paul Gasper and upstream attribution; show catalogue counts only with their source date.",
+      "level": "Foundation",
+      "tags": [
+        "foundations",
+        "contribution",
+        "battery",
+        "data-provenance"
+      ],
+      "source_paths": [
+        "README.md",
+        "awesome-battery-data.png"
+      ],
+      "source_urls": [
+        "https://github.com/mohammadrezwankhan/awesome-battery-data/blob/a8fe5506536827b9464b99fbd57283e815392c01/README.md",
+        "https://github.com/mohammadrezwankhan/awesome-battery-data/blob/a8fe5506536827b9464b99fbd57283e815392c01/awesome-battery-data.png"
+      ],
+      "parameters": [],
+      "command": null,
+      "native_id": null,
+      "native_route": null,
+      "execution_status": "source-linked guide; no execution by this dashboard"
+    },
+    {
+      "id": "path-02",
+      "title": "Compare electrochemical data candidates",
+      "summary": "Inspect chemistry, format, study purpose and measurement columns.",
+      "objective": "Shortlist a dataset matching the cell, protocol and measurement need.",
+      "checkpoint": "Open the original paper/data source and verify its license, units and conditions; no dataset was downloaded here.",
+      "level": "Foundation",
+      "tags": [
+        "foundations",
+        "contribution",
+        "data-provenance"
+      ],
+      "source_paths": [
+        "README.md"
+      ],
+      "source_urls": [
+        "https://github.com/mohammadrezwankhan/awesome-battery-data/blob/a8fe5506536827b9464b99fbd57283e815392c01/README.md"
+      ],
+      "parameters": [],
+      "command": null,
+      "native_id": null,
+      "native_route": null,
+      "execution_status": "source-linked guide; no execution by this dashboard"
+    },
+    {
+      "id": "path-03",
+      "title": "Match a model or analysis tool",
+      "summary": "Read Battery Modeling Code and Battery Data Analysis and Hardware Interface Code.",
+      "objective": "Separate simulation frameworks from data processing and hardware-interface tooling.",
+      "checkpoint": "Identify the listed tool language and scope; a link in the catalogue is not evidence the tool was tested in this fork.",
+      "level": "Applied",
+      "tags": [
+        "application",
+        "contribution"
+      ],
+      "source_paths": [
+        "README.md"
+      ],
+      "source_urls": [
+        "https://github.com/mohammadrezwankhan/awesome-battery-data/blob/a8fe5506536827b9464b99fbd57283e815392c01/README.md"
+      ],
+      "parameters": [],
+      "command": null,
+      "native_id": null,
+      "native_route": null,
+      "execution_status": "source-linked guide; no execution by this dashboard"
+    },
+    {
+      "id": "path-04",
+      "title": "Prepare a sourced catalogue update",
+      "summary": "Use the inline edit-and-pull-request invitation and existing table schema.",
+      "objective": "Draft a focused correction or addition with an original reference and dataset context.",
+      "checkpoint": "Preserve existing columns and upstream author attribution; do not repeat historical totals as newly computed facts.",
+      "level": "Applied",
+      "tags": [
+        "application",
+        "contribution",
+        "data-provenance"
+      ],
+      "source_paths": [
+        "README.md"
+      ],
+      "source_urls": [
+        "https://github.com/mohammadrezwankhan/awesome-battery-data/blob/a8fe5506536827b9464b99fbd57283e815392c01/README.md"
+      ],
+      "parameters": [],
+      "command": null,
+      "native_id": null,
+      "native_route": null,
+      "execution_status": "source-linked guide; no execution by this dashboard"
+    }
+  ]
+}
