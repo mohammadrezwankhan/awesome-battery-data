@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "repository": "awesome-battery-data",
+  "preserved_current_commit": "60e50a3680d9556454497247cef6aef4a8ec0472",
+  "animations": [
+    {
+      "kind": "image",
+      "title": "Original floating-layer SVG",
+      "badge": "Earlier animated media",
+      "description": "Floating isometric tiers, pulsing circuits, and flowing dashed traces from the earlier repository hero.",
+      "format": "Animated SVG",
+      "preview": "media/hero-25d-cbf302005ff1.svg",
+      "preview_sha256": "0ad64e54fbad84a2817f0726bfa4df279689c95bd4c41669560b448708c35df2",
+      "motion_identity": "cbf302005ff16758600ba48f87605c7f6128d021de4d4865c66fd458b737e649",
+      "sources": [
+        {
+          "path": "assets/hero-25d.svg",
+          "commit": "26f20b4b58f60434749afb2dd1d62465cb37817c",
+          "sha256": "bd37e20fef45fbe7b3b1fe91b9c917fd1105e6345b6d345a3bb84306710746d1",
+          "blob": "5724b47682be316e112b5ad5bc37559269bb5115",
+          "url": "https://github.com/mohammadrezwankhan/awesome-battery-data/blob/26f20b4b58f60434749afb2dd1d62465cb37817c/assets/hero-25d.svg"
+        },
+        {
+          "path": "assets/hero-25d.svg",
+          "commit": "8268262e4fde415bc16eab04e6e8d69608c38dcc",
+          "sha256": "7572cc344f5e85c236aa5234d5ebfaf1da11e6adbfb5a8f55843298ce453307b",
+          "blob": "cb1e65eff6774eb8953a2ca36dbbf0518f72246c",
+          "url": "https://github.com/mohammadrezwankhan/awesome-battery-data/blob/8268262e4fde415bc16eab04e6e8d69608c38dcc/assets/hero-25d.svg"
+        }
+      ]
+    },
+    {
+      "kind": "waveform",
+      "title": "Original interactive waveform",
+      "badge": "Previous dashboard animation",
+      "description": "The earlier 2.5D perspective card and its moving waveform, with the original visual formulas and sliders.",
+      "preview": "waveform.html",
+      "preview_sha256": "78b719443de3c0453477386fe8a923db384f62c664cbe6c20ba5a83efaacb08a",
+      "sources": [
+        {
+          "path": "docs/index.html",
+          "commit": "26f20b4b58f60434749afb2dd1d62465cb37817c",
+          "blob": "2c349da9f22d4c3a571a491705877b61c27cbe95",
+          "sha256": "f43fdf521b0ab7bcea38f09ec272799a3773d663f555f7473968dc37cfe026da",
+          "url": "https://github.com/mohammadrezwankhan/awesome-battery-data/blob/26f20b4b58f60434749afb2dd1d62465cb37817c/docs/index.html"
+        },
+        {
+          "path": "docs/index.html",
+          "commit": "8268262e4fde415bc16eab04e6e8d69608c38dcc",
+          "blob": "43382ece73d685d7b17f73ac988ecf36fd73d427",
+          "sha256": "20c4c118ce748206e6844518e97cdd0356b92848999e1794634c39d4fa85e098",
+          "url": "https://github.com/mohammadrezwankhan/awesome-battery-data/blob/8268262e4fde415bc16eab04e6e8d69608c38dcc/docs/index.html"
+        }
+      ]
+    }
+  ],
+  "native_links": [],
+  "historical_source_links": []
+}
