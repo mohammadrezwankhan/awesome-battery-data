@@ -1,4 +1,4 @@
-![Battery Data Discovery Lab: original vector system illustration](assets/hero-25d.svg)
+![Battery Data Discovery Lab: original vector system illustration](assets/brand-uniformity/hero-25d.svg)
 
 A forked directory of electrochemical, microstructural, safety, modeling, and analysis resources. Synthetic fade scenarios explain why protocol metadata matters before combining datasets.
 
