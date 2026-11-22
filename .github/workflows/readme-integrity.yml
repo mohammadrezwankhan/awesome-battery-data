@@ -1,0 +1,31 @@
+name: README local-link integrity
+on:
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'scripts/check_readme_local_links.py'
+      - 'tests/test_readme_local_links.py'
+      - '.github/workflows/readme-integrity.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'README.md'
+      - 'scripts/check_readme_local_links.py'
+      - 'tests/test_readme_local_links.py'
+      - '.github/workflows/readme-integrity.yml'
+  schedule:
+    - cron: '43 7 * * 2'
+permissions:
+  contents: read
+jobs:
+  readme-links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Regression tests
+        run: python3 -m unittest discover -s tests -p 'test_readme_local_links.py' -v
+      - name: Validate README links
+        run: python3 scripts/check_readme_local_links.py README.md
